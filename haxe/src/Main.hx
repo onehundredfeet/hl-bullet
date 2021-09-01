@@ -12,18 +12,26 @@ import Simplex;
 class Main {
     static function main() {
 
-        var sim1 = new Simplex("ABCdef", 2000, 2010);
-        var sim2 = new Simplex("ABCdef", 2000, 3010);
-        trace(sim1.getAge()); 
-        trace(sim2.getAge()); 
+        // var sim1 = Simplex.requestClass(1, 2);
+        // var f = Simplex.getClassSum(sim1);
+        // trace(f);
+
+        // var sim2 = Simplex.requestBullet(4, 5, 6);
+        // var e = Simplex.getBulletSum(sim2);
+        // trace(e);
+
+        var bullet1 = Simplex.requestBullet(1, 2, 3);
+        trace(Simplex.getBulletSum(bullet1));
+        var bullet2 = Simplex.requestBullet(4, 5, 6);
+        trace(Simplex.getBulletSum(bullet2));
+        bullet1 = Simplex.bulletOperatorPlus(bullet1, bullet2);
+        trace(Simplex.getBulletSum(bullet1));
 
 
-        var sim_haxe = Simplex.getHaxeObject("AsHaxe", 10, 12);
-        trace(sim_haxe.age);
-        trace(sim_haxe.greeting);
 
-        var haxe_class = sim1.requestClass(100, 200);
-        trace(sim1.getClassSum(haxe_class));
+        // trace(f);
+        // var haxe_class = sim1.requestClass(100, 200);
+        // trace(sim1.getClassSum(haxe_class));
 
         // var bullet1 = sim1.requestBulletVector(1, 2, 3);
         // var bullet2 = sim1.requestBulletVector(4, 5, 6);

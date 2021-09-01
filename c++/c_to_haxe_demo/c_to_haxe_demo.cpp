@@ -3,27 +3,31 @@
 #include <hl.h>
 
 //#include "BulletDynamics/Dynamics/btRigidBody.h"
-//#include "LinearMath/btVector3.h"
+#include "LinearMath/btVector3.h"
 
-//class hlext_bullet_vector {
-//public: 
-//	hlext_bullet_vector(float a, float b, float c) {};
+typedef class btVector3 bullet;
+
+//class bullet {
 //
-//	int getX() {
-//		return 6;
+//public:
+//
+//	double a = 0;
+//	double b = 0;
+//
+//	bullet(double _a, double _b) {
+//		a = _a;
+//		b = _b;
+//	};
+//
+//	double getSum() {
+//		return a + b;
 //	}
 //};
 
-//typedef class btVector3 hlext_bullet_vector;
 
-struct hlext_result {
-	vbyte *greeting;
-	int age;
-};
-
-
-//typedef struct _result hlext_result;
-//
+//int getNumber() {
+//	return
+//}
 
 class hlext_class {
 	
@@ -42,14 +46,7 @@ public:
 	}
 };
 
-//struct hltext_class {
-//	int a = 0;
-//	int b = 0; 
-//};
 
-HL_PRIM int HL_NAME(get_class_sum)(hlext_class* instance) {
-	return instance->getSum();
-}
 
 HL_PRIM hlext_class *HL_NAME(request_class)(int _a, int _b) 
 {
@@ -59,111 +56,63 @@ HL_PRIM hlext_class *HL_NAME(request_class)(int _a, int _b)
 	return instance;
 }
 
-//HL_PRIM hlext_bullet_vector *HL_NAME(request_bullet_vector)(float a, float b, float c)
+HL_PRIM int HL_NAME(get_class_sum)(hlext_class* instance) {
+	return instance->getSum();
+}
+
+
+
+HL_PRIM bullet *HL_NAME(request_bullet)(double _a, double _b, double _c)
+{
+	bullet *instance = (bullet*)hl_gc_alloc_finalizer(sizeof(bullet));
+	bullet rawInstance(_a, _b, _c);
+	memcpy(instance, &rawInstance, sizeof(bullet));
+	return instance;
+}
+
+HL_PRIM double HL_NAME(get_bullet_sum)(bullet* instance) {
+	return instance->getX();
+}
+
+HL_PRIM bullet *HL_NAME(bullet_operator_plus)(bullet* source, bullet* other)
+{
+    *source += *other;
+    return source;
+}
+
+//
+//HL_PRIM bullet_vector *HL_NAME(request_bullet_vector)(float a, float b, float c)
 //{
-//	hlext_bullet_vector *instance = (hlext_bullet_vector*)hl_gc_alloc_finalizer(sizeof(hlext_bullet_vector));
+//	bullet_vector *instance = (bullet_vector*)hl_gc_alloc_finalizer(sizeof(bullet_vector));
+//	instance->a = a;
+//	instance->b = b;
+//	instance->c = c;
+//	return instance;
 //	/*hlext_bullet_vector raw(1, 2, 3);
 //	memcpy(instance, &raw, sizeof(hlext_bullet_vector));*/
-//	return instance;
 //}
 //
-//HL_PRIM int HL_NAME(vector_valuex)(hlext_bullet_vector *source){
-//	//int x = source->getX();
-//	return 0;
+//HL_PRIM int HL_NAME(vector_valuex)(bullet_vector *source){
+//	return 100;
 //}
 
-
-//
 //HL_PRIM hlext_bullet_vector *HL_NAME(request_bullet_vector_operator_plus)(hlext_bullet_vector* source, hlext_bullet_vector* other)
 //{
 //	*source += *other;
 //	return source;
 //}
 
-HL_PRIM hlext_result *HL_NAME(request_result)(vbyte* name, int birthYear, int currentYear) {
-
-	hlext_result *cr = (hlext_result*)hl_gc_alloc_finalizer(sizeof(hlext_result));
-
-	hl_buffer *b = hl_alloc_buffer();
-	hl_buffer_str(b, USTR("Egun on, "));
-	hl_buffer_str(b, (uchar*)name);
-	hl_buffer_str(b, USTR("!"));
-
-	cr->greeting = (vbyte*)hl_buffer_content(b, NULL);
-	cr->age = currentYear - birthYear;
-
-	return cr;
-}
-
-HL_PRIM vdynamic *HL_NAME(get_haxe_object)(vbyte* name, int birthYear, int currentYear) {
-	hlext_result *cr = HL_NAME(request_result)(name, birthYear, currentYear);
-
-	// allocate new dynamic object
-	vdynamic *obj = (vdynamic*)hl_alloc_dynobj();
-	// set field called "age" of 'obj' object of type 'int' with the cr->age value
-	// hl_hash_gen(hl_to_utf16("age"), true): get the numeric represenation of the field name
-	hl_dyn_seti(obj, hl_hash_gen(hl_to_utf16("age"), true), &hlt_i32, cr->age);
-
-	// set field called "name" of 'obj' object of type 'vbyte' with the cr->name value
-	// hl_hash_gen(hl_to_utf16("greeting"), true): get the numeric represenation of the field name
-	hl_dyn_setp(obj, hl_hash_gen(hl_to_utf16("greeting"), true), &hlt_bytes, cr->greeting);
-
-	return obj;
-}
-
-HL_PRIM vbyte *HL_NAME(result_greeting)(hlext_result* cr) {
-	return cr->greeting;
-}
-
-HL_PRIM int HL_NAME(result_age)(hlext_result* cr) {
-	return cr->age;
-}
-
-
-HL_PRIM vbyte* HL_NAME(generate)(int width, int height, int seed)
-{
-	vbyte* buffer = hl_alloc_bytes(width * height);
-
-	return buffer;
-}
-
-
-HL_PRIM float HL_NAME(multiply)(float width, float height)
-{
-	float temp = 200;
-	temp += width;
-	return temp;
-}
-
-HL_PRIM vdynamic* HL_NAME(b3MakeInt2_h)(int x, int y)
-{
-	//b3Int2 b3Val = b3MakeInt2(x, y);
-
-	vdynamic* obj = (vdynamic*) hl_alloc_dynobj();   
-	/*hl_dyn_seti(obj, hl_hash_utf8("x"), &hlt_i32, b3Val.x);
-	hl_dyn_seti(obj, hl_hash_utf8("y"), &hlt_i32, b3Val.y);*/
-	return obj;
-}
-
-#define _RESULT _ABSTRACT( hlext_result )
 #define _RESULT_CLASS _ABSTRACT( hlext_class )
-#define _BULLET_VECTOR _ABSTRACT( hlext_bullet_vector )
-
-DEFINE_PRIM(_BYTES, generate, _I32 _I32 _I32);
-DEFINE_PRIM(_F32, multiply, _F32 _F32);
-DEFINE_PRIM(_DYN, b3MakeInt2_h, _I32 _I32);
-
-DEFINE_PRIM(_RESULT, request_result, _BYTES _I32 _I32);
-DEFINE_PRIM(_DYN, get_haxe_object, _BYTES _I32 _I32);
-DEFINE_PRIM(_BYTES, result_greeting, _RESULT);
-DEFINE_PRIM(_I32, result_age, _RESULT);
+#define _BULLET _ABSTRACT( bullet )
+//#define _BULLET_VECTOR _ABSTRACT( bullet_vector )
 
 DEFINE_PRIM(_RESULT_CLASS, request_class, _I32 _I32);
 DEFINE_PRIM(_I32, get_class_sum, _RESULT_CLASS);
 
+DEFINE_PRIM(_BULLET, request_bullet, _F64 _F64 _F64);
+DEFINE_PRIM(_F64, get_bullet_sum, _BULLET);
+DEFINE_PRIM(_BULLET, bullet_operator_plus, _BULLET _BULLET);
+
 //DEFINE_PRIM(_BULLET_VECTOR, request_bullet_vector, _F32 _F32 _F32);
 //DEFINE_PRIM(_I32, vector_valuex, _BULLET_VECTOR);
-
-// DEFINE_PRIM(_BULLET_VECTOR, request_bullet_vector_operator_plus, _BULLET_VECTOR _BULLET_VECTOR);
-
-
+//
