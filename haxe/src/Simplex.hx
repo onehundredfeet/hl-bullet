@@ -23,12 +23,16 @@ abstract HString(String) from String to String {
 
 private typedef HLExtResultHandler = hl.Abstract<"hlext_result">;
 private typedef HLExtClassHandler = hl.Abstract<"hlext_class">;
+//private typedef HLExtBulletVectorHandler = hl.Abstract<"hlext_bullet_vector">;
 
 @:hlNative("simplex")
 private class CLib
 {
 	public static function requestClass(a: Int, b: Int ) : HLExtClassHandler { return null; }
     public static function getClassSum(instance : HLExtClassHandler ) : Int { return 0; }
+    //public static function requestBulletVector(a: Float, b: Float, c: Float) : HLExtBulletVectorHandler { return null; }
+    //public static function vectorValuex(source: HLExtBulletVectorHandler) : Int { return 0; }
+    //public static function requestBulletVectorOperatorPlus(source: HLExtBulletVectorHandler, other: HLExtBulletVectorHandler) : HLExtBulletVectorHandler { return null; }
 
 	public static function requestResult( name:hl.Bytes, birthYear:Int, currentYear:Int ) : HLExtResultHandler { return null; }
 	public static function resultGreeting( result:HLExtResultHandler ) : Null<hl.Bytes> { return null; }
@@ -43,6 +47,19 @@ class Simplex {
 	public function new(name : HString, birthYear : Int, currentYear : Int) {
 		result = CLib.requestResult(name, birthYear, currentYear);
 	}
+
+    // public function requestBulletVector(a: Float, b: Float, c: Float):HLExtBulletVectorHandler {
+    //     return null; 
+    //     // return CLib.requestBulletVector(a, b, c);
+    // }
+
+    // public function requestBulletVectorX(a : HLExtBulletVectorHandler) : Float { 
+    //     return 0; //CLib.requestBulletVectorValuex(a);
+    // }
+    
+    // public function requestBulletVectorOperatorPlus(a: HLExtBulletVectorHandler, b: HLExtBulletVectorHandler) : HLExtBulletVectorHandler { 
+    //     return null; //CLib.requestBulletVectorOperatorPlus(a, b);
+    // }
 
     public function requestClass(a: Int, b: Int):HLExtClassHandler {
         return CLib.requestClass(a, b);

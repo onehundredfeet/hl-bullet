@@ -22,9 +22,16 @@ class Main {
         trace(sim_haxe.age);
         trace(sim_haxe.greeting);
 
-        var haxe_class = sim1.requestClass(1, 2);
+        var haxe_class = sim1.requestClass(100, 200);
         trace(sim1.getClassSum(haxe_class));
 
+        // var bullet1 = sim1.requestBulletVector(1, 2, 3);
+        // var bullet2 = sim1.requestBulletVector(4, 5, 6);
+        // trace(sim1.requestBulletVectorX(bullet1));
+        // bullet1 = sim1.requestBulletVectorOperatorPlus(bullet1, bullet2);
+        // trace(sim1.requestBulletVectorX(bullet1));
+
+        //vector3 = CLib.g
         // var a = 10;
         // var m = Simplex.multiply(20, 5);
 
