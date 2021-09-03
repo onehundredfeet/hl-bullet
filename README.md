@@ -1,6 +1,4 @@
-# Bullet
-
-[Bullet Physics](https://github.com/bulletphysics) wrapper for Heaps
+# Bullet3 Hashlink
 
 ## Preparation
 * haxelib install webidl
@@ -11,7 +9,7 @@
 Note: It is recommended to clone some release tag, or at least make sure that the current cloned commit is stable.
 * Create new folder somewhere on disk and clone https://github.com/bulletphysics/bullet3 . 
 
-## Compilation
+## c++ ompilation (as *.hdll)
 * run `make gen_hl`
 * run `cmake .. -A x64 -G "Visual Studio 15 2017" -DBULLET_SRC_DIR="path/to/bullet3/src" -DHL_DIR="path/to//HashLink/hdll/location/"`
 * open and build build/Project.sln
