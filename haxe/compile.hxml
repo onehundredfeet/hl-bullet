@@ -1,5 +1,0 @@
--cp src
--lib heaps
--lib hldx
--hl hello.hl
--main Main
