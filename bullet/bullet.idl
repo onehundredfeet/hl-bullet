@@ -512,8 +512,8 @@ interface btTypedConstraint {
 	[Const] float getParam(long num, long axis);
 	void setParam(long num, float value, long axis);
 	float getAppliedImpulse();
-	void setEnabled( bool enabled );
-	bool isEnabled();
+	void setEnabled( boolean enabled );
+	boolean isEnabled();
 };
 
 enum btConstraintParams {
