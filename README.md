@@ -13,6 +13,7 @@ Note: It is recommended to clone some release tag, or at least make sure that th
 ## 3. c++ compilation (as *.hdll)
 * cd `<hashlink-bullet dir>`
 * run `make genhl`
+* make a directory to build in eg. 'build'
 * cd `<hashlink-bullet dir>/build` or choose your favourite cmake location to build from
 
 ## 3.1A Windows
