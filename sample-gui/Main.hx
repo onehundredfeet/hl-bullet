@@ -5,6 +5,7 @@ class Main extends hxd.App {
 	var world : bullet.World;
 
 	override function init() {
+
 		world = new bullet.World(s3d);
 		world.setGravity(0,0,-9.81);
 
@@ -23,7 +24,6 @@ class Main extends hxd.App {
 			m.y = Math.random() * 10;
 			m.z = 10 + Math.random() * 10;
 			b.loadPosFromObject();
-
 
 			var mt = new h3d.Matrix();
 			mt.identity();
