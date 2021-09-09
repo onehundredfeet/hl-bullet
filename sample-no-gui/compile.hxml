@@ -1,0 +1,5 @@
+-lib heaps
+-lib bullet
+-cp .
+-main Main
+-hl sample.hl
