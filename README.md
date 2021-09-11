@@ -7,9 +7,9 @@
 1.1. Install haxe: (For linux: https://haxe.org/download/linux/ )  
 1.2. Install haxelink: (For linux: http://www.unexpected-vortices.com/haxe/getting-started-hl.html )  
 1.3. Install heaps: (For linux: https://heaps.io/documentation/installation.html )  
-1.4. Install webidl:   
+1.4. Install the modified webidl from git:   
 ```sh
-haxelib install webidl
+haxelib git webidl https://github.com/onehundredfeet/webidl.git
 ```
 
 ### 2. Build & install bullet.hdll  
@@ -17,7 +17,7 @@ haxelib install webidl
 2.1. Clone this repo in some clean directory, we will call this HL-BULLET-ROOT in this tutorial.   
 Open new terminal in this directory.  
 ```sh
-haxelib dev bullet bullet
+haxelib dev hashlink-bullet hashlink-bullet
 ```
 
 2.2 Clone bullet3 c++ sources in some clean directory
@@ -90,8 +90,6 @@ specific cmake command example on linux:
 
 ### 3. Test  
 Open new terminal in HL-BULLET-ROOT/sample-gui and run:  
-
-haxe compile.hxml
 
 Note: If directx is not available, then open the new terminal in HL-BULLET-ROOT/sample-no-gui  
 ```
