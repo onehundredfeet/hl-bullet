@@ -72,8 +72,8 @@ specific cmake command example on linux:
 * Open and build build/Project.sln  
 * Copy ./build/Debug/bullet.hdll to ../path/to/HashLink/hdll/location/ # Just in case Visual Studio install step fails.  
 
-**For MAC:**  
-* Note: brew has installed HL to these directories  
+**For UNIX (Mac / Linux):**  
+* Note: Specify the hashlink directories on your system.  On Mac, brew defaults /usr/local (lib/include).
 ```sh
     cmake ..  -GNinja 
     -DBULLET_SRC_DIR="<BulletDir>/src" 
@@ -90,6 +90,9 @@ specific cmake command example on linux:
 
 ### 3. Test  
 Open new terminal in HL-BULLET-ROOT/sample-gui and run:  
+
+haxe compile.hxml
+
 Note: If directx is not available, then open the new terminal in HL-BULLET-ROOT/sample-no-gui  
 ```
 haxe compile.hxml # This will generate the sample.hl file
