@@ -1,0 +1,6 @@
+-lib heaps
+-lib bullet
+-lib hldx
+-cp .
+-main KinematicRigidBodyExample
+-hl kinematic_rigid_body_example.hl
