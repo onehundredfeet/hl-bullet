@@ -162,7 +162,7 @@ ${BULLET_SRC_DIR}/LinearMath/btSerializer.cpp
 ${BULLET_SRC_DIR}/LinearMath/btSerializer64.cpp
 ${BULLET_SRC_DIR}/LinearMath/btThreads.cpp
 ${BULLET_SRC_DIR}/LinearMath/btVector3.cpp
-bullet.cpp
+src/bullet.cpp
 )
 
 set_target_properties(bullet.hdll
@@ -181,17 +181,22 @@ ${HL_INCLUDE_DIR}
 )
 
 link_directories(bullet.hdll
-PRIVATE
 ${HL_LIB_DIR}
 )
 
-#target_link_libraries(bullet.hdll
-#libhl
-#)
+find_library(LIBHL NAMES hl 
+             HINTS ${HL_LIB_DIR} )
+
+target_link_libraries(bullet.hdll
+${LIBHL}
+)
+
 
 if (UNIX)
     # Some special flags are needed for GNU GCC compiler
-    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -shared -fPIC -Wall -O3 -lstdc++ -lhl -fpermissive")
+    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -fPIC  -O3  -fpermissive")
+    #not sure why the ${HL_LIB_DIR} is necessary given the above.
+    SET(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_MODULE_LINKER_FLAGS} -shared  ")
 endif (UNIX)
 
 install(TARGETS bullet.hdll DESTINATION ${HDLL_DESTINATION})
