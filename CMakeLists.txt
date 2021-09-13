@@ -180,6 +180,10 @@ ${BULLET_SRC_DIR}
 ${HL_INCLUDE_DIR}
 )
 
+if (WIN32) # Specific Windows platform settings
+    target_link_directories(bullet.hdll PRIVATE ${HL_LIB_DIR})
+    target_link_libraries(bullet.hdll libhl)
+else()
 link_directories(bullet.hdll
 ${HL_LIB_DIR}
 )
@@ -190,7 +194,7 @@ find_library(LIBHL NAMES hl
 target_link_libraries(bullet.hdll
 ${LIBHL}
 )
-
+endif()
 
 if (UNIX)
     # Some special flags are needed for GNU GCC compiler
