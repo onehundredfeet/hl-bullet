@@ -6,6 +6,8 @@ class Main extends hxd.App {
 
 	override function init() {
 
+		@:privateAccess hxd.Window.getInstance().window.title = "Gravity Example";
+
 		world = new bullet.World(s3d);
 		world.setGravity(0,0,-9.81);
 
