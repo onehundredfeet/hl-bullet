@@ -6,7 +6,7 @@ class Constraint {
 	public var world(default,null) : World;
 	public var disableCollisionsBetweenLinkedBodies(default, set) : Bool = false;
 
-	function new( cst, ?world : World ) {
+	public function new( cst, ?world : World ) {
 		this.cst = cst;
 		if( world != null ) addTo(world);
 	}
@@ -25,7 +25,7 @@ class Constraint {
 		cst.delete();
 	}
 
-	function set_disableCollisionsBetweenLinkedBodies(b) {
+	public function set_disableCollisionsBetweenLinkedBodies(b) {
 		if( disableCollisionsBetweenLinkedBodies == b ) return b;
 		disableCollisionsBetweenLinkedBodies = b;
 		var w = world;
