@@ -1,6 +1,0 @@
--lib heaps
--lib bullet
--lib hldx
--cp .
--main BulletTestNoGUI
--hl bullet_test_no_gui.hl
