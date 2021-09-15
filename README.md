@@ -26,7 +26,17 @@ git clone https://github.com/bulletphysics/bullet3.git
 ```
    The content of /src dir will be used in the next step.  
     Note: It is recommended to clone some release tag, or at least make sure that the current cloned commit is stable.  
-   
+    **Windows only note**
+    To be able to successfully compile this library you must make the following change 
+    Go to `\bullet3\src\BulletCollision\CollisionShapes\btHeightfieldTerrainShape.h` and replace: 
+```sh
+    Range(btScalar min, btScalar max) : min(min), max(max) {}
+```
+   with
+```sh
+    Range(btScalar _min, btScalar _max) : min(_min), max(_max) {}
+```
+
 2.3 .Open new terminal under HL-BULLET-ROOT and 
 ```sh
 make genhl
