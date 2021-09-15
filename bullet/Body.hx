@@ -120,6 +120,10 @@ class Body {
 		setTransform(new Point(object.x, object.y, object.z), object.getRotationQuat());
 	}
 
+	public function setMaterialColor(color : Int) {
+		object.toMesh().material.color.setColor(color);
+	}
+
 	function get_position() {
 		var t = inst.getCenterOfMassTransform();
 		var p = t.getOrigin();
