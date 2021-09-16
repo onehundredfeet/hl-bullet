@@ -1,5 +1,5 @@
 genhl:
-	haxe -lib webidl --macro "bullet.Generator.generateCpp()"
+	haxe -lib hl-idl --macro "bullet.Generator.generateCpp()"
 	
 genjs:
-	haxe -lib webidl --macro "bullet.Generator.generateJs()"
+	haxe -lib hl-idl --macro "bullet.Generator.generateJs()"
