@@ -9,7 +9,7 @@
 1.3. Install heaps: (For linux: https://heaps.io/documentation/installation.html )  
 1.4. Install the modified webidl from git:   
 ```sh
-haxelib git webidl https://github.com/onehundredfeet/webidl.git
+haxelib git hl-idl https://github.com/onehundredfeet/hl-idl.git
 ```
 
 ### 2. Build & install bullet.hdll  
@@ -17,7 +17,7 @@ haxelib git webidl https://github.com/onehundredfeet/webidl.git
 2.1. Clone this repo in some clean directory, we will call this HL-BULLET-ROOT in this tutorial.   
 Open new terminal in this directory.  
 ```sh
-haxelib dev hashlink-bullet hashlink-bullet
+haxelib dev hl-bullet hl-bullet
 ```
 
 2.2 Clone bullet3 c++ sources in some clean directory
