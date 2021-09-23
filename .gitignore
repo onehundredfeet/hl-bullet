@@ -2,3 +2,4 @@ build/
 src/bullet.cpp
 sample-gui/sample.hl
 *.hl
+.DS_Store
