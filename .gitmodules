@@ -1,0 +1,3 @@
+[submodule "ext/bullet3"]
+	path = ext/bullet3
+	url = https://github.com/bulletphysics/bullet3.git
