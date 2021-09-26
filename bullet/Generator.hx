@@ -9,6 +9,8 @@ class Generator {
 #pragma warning(disable:4244)
 #pragma warning(disable:4316)
 #endif
+#undef min
+#undef max
 #include <btBulletDynamicsCommon.h>
 #include <BulletSoftBody/btSoftBody.h>
 #include <BulletSoftBody/btSoftBodyRigidBodyCollisionConfiguration.h>
